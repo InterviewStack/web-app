@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # rest framework
     'rest_framework',
     # interviewStack apps
+    'core',
     'api',
 ]
 

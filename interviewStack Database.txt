@@ -1,0 +1,57 @@
+# Models for interviewStack
+
+1. Blog:
+	Title
+	Content
+	Author
+	Date Published
+	Date Updated
+	Comments
+2. Questions:
+	Company Name
+	Question
+	Question Tags
+	Question Type (MCQ, Theoritical, Code)
+	Model Answer
+	Choices (Optional, only for MCQ based)
+3. Forum:
+	Thread Title
+	Thread Description
+	Author
+	Date Published
+	Last Updated
+4. User: 
+	Username (userid)
+	User Name (fname, lname)
+	Profile Image
+	User BIO
+	User Links
+5. User Interests:
+	Tags: tag1, tag2, tag3, ...
+	Scores: score1, score2, score3, ...
+6. Interactions:
+	TagID
+	Action
+	User ID
+7. Comments:
+	Comment content
+	Votes (positive/negative)
+	Comment Author
+	Date Published
+	Date Updated
+8. User Results:
+	TestID/Question ID
+	Score
+	User ID
+9. Videos:
+	Video Title
+	Video Description
+	Author
+	Date Published
+	Youtube Embed Link
+10. Tags:
+	Company Name (these will be multiple tags)
+	Content Type (Video/question/blog/comment/thread)
+	Difficulty (optional)
+	Domain
+	Technical Tags
