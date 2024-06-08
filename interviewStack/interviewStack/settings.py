@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # interviewStack apps
     'core',
     'api',
+    'feed',
 ]
 
 MIDDLEWARE = [
