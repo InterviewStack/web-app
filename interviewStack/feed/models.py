@@ -23,3 +23,7 @@ class Likes(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
+class ReadingList(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)

@@ -28,16 +28,12 @@
             </div>
         </nav>
     </header>
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+    {% block content %}
+    {% endblock %}
     <footer>
         <!-- Footer content can go here -->
         {% block footer %}
         {% endblock %}
     </footer>
-    {% block extra_scripts %}
-    {% endblock %}
 </body>
 </html>

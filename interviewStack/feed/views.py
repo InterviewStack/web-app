@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from .models import *
 
-# Create your views here.
+def userFeed(request):
+    if request.user.is_authenticated:
+        return render(request, 'core/base.html')
+
+
