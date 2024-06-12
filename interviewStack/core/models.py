@@ -8,6 +8,8 @@ class UserProfile(models.Model):
     profile_image = models.ImageField(upload_to='profile_images/')
     bio = models.TextField()
     links = models.TextField()
+    role = models.CharField(max_length=10, default="student")
+    mentor = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
 class UserInterest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
