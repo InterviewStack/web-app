@@ -116,6 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Rest Framework
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
@@ -125,6 +128,8 @@ REST_FRAMEWORK = {
 
 ROOT_URLCONF = 'interviewStack.urls'
 WSGI_APPLICATION = 'interviewStack.wsgi.application'
+
+SITE_ID = 1
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

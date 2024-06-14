@@ -31,4 +31,5 @@ class QuizResult(models.Model):
     student = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     score = models.FloatField()
+    attempt = models.IntegerField()
     date_taken = models.DateTimeField(auto_now_add=True)
