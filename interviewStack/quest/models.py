@@ -18,7 +18,7 @@ class Answer(models.Model):
 
 class Quiz(models.Model):
     quizid = models.TextField(unique=True)
-    question = models.ManyToManyField(Question, on_delete=models.CASCADE)
+    question = models.ManyToManyField(Question)
     author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     test_duration = models.IntegerField()
     created_timestamp = models.DateTimeField(auto_now_add=True)
