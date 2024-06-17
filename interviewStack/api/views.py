@@ -25,11 +25,15 @@ class addQuestions(APIView):
             question.save()
             choices = data.get('choices', [])
             for choice in choices:
-                answer = Answer(
+                choice = Choice(
                     question=question.id,
-                    choice=choice
+                    choice=choice,
                 )
                 answer.save()
+            answer = Answer(
+                question=question.id,
+                choice=data.get('correct_answer')
+            )
         except Exception as e:
             return Response({'error': str(e)}, status=400)
 

@@ -8,8 +8,12 @@ class Question(models.Model):
     author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     posted_timestamp = models.DateTimeField(auto_now_add=True)
 
-class Answer(models.Model):
+class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice = models.TextField()
+
+class Answer(models.Model):
+    question = models.OneToOneField(Question, on_delete=models.CASCADE)
     choice = models.TextField()
 
 class Quiz(models.Model):
