@@ -20,6 +20,7 @@ class Interaction(models.Model):
     tag_id = models.IntegerField()
     action = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
 class Tag(models.Model):
     company_name = models.CharField(max_length=255)

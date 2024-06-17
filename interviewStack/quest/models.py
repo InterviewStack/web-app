@@ -14,15 +14,16 @@ class Answer(models.Model):
 
 class Quiz(models.Model):
     quizid = models.TextField(unique=True)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ManyToManyField(Question, on_delete=models.CASCADE)
     author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    test_duration = models.IntegerField()
     created_timestamp = models.DateTimeField(auto_now_add=True)
     tags = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
 class QuestionResult(models.Model):
     student = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice = models.ForeignKey(Answer, on_delete=models.CASCADE)
+    choice = models.TextField()
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     reward = models.IntegerField()
     updated_timestamp = models.DateTimeField(auto_now_add=True)
@@ -32,4 +33,6 @@ class QuizResult(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     score = models.FloatField()
     attempt = models.IntegerField()
+    time_started = models.DateTimeField()
+    time_submitted = models.DateTimeField()
     date_taken = models.DateTimeField(auto_now_add=True)
