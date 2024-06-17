@@ -1,7 +1,13 @@
 from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from feed.models import *
 from core.models import *
 from quest.models import *
+from django.urils import timestamp
+from django.db.models import Sum
+
 
 # Create your views here.
 class addQuestions(APIView):
@@ -69,7 +75,6 @@ class addQuiz(APIView):
             tag, created = Tag.objects.get_or_create(**tag_data)
             question_ids = data.get("questions", [])
             questions = Question.objects.filter(id__in=question_ids)
-
             quiz = Quiz.objects.create(
                 author=author,
                 test_duration=test_duration,
@@ -95,12 +100,22 @@ class recordAnswer(APIView):
             question_result, created = QuestionResult.objects.update_or_create(
                 student=student,
                 question=ques,
-                defaults={
-                    'choice': choice,
-                    'reward': reward,
-                    'quiz': quiz,  # Ensure you provide the quiz context
-                }
+                choice= choice,
+                reward= reward,
+                quiz= quiz,  
+                attempt = data.get('attempt')
             )
             return Response({'reward': reward}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        
+class submitTest(APIView):
+    data = request.data
+    def post(self,request):
+        try:
+            student = request.user
+            quiz = Quiz.objects.get(quizid = data.get("quiz"))
+            attempt = data.get('attempt')
+            score = QuestionResult.objects.filter(student=student, quiz=quiz, attempt=attempt).aggregate(Sum('reward'))
+            time_submitted = timestamp.now()
+            

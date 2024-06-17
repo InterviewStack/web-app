@@ -30,13 +30,14 @@ class QuestionResult(models.Model):
     choice = models.TextField()
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     reward = models.IntegerField()
+    attempt = models.IntegerField()
     updated_timestamp = models.DateTimeField(auto_now_add=True)
 
 class QuizResult(models.Model):
     student = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     score = models.FloatField()
-    attempt = models.IntegerField()
+    attempt = models.IntegerField(default=1)
     time_started = models.DateTimeField()
     time_submitted = models.DateTimeField()
     date_taken = models.DateTimeField(auto_now_add=True)
